@@ -17,6 +17,10 @@
         </dependency>
         <dependency>
             <groupId>lark</groupId>
+            <artifactId>lark-db</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>lark</groupId>
             <artifactId>lark-util</artifactId>
         </dependency>
         <dependency>
