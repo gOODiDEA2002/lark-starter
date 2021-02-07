@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.5.RELEASE</version>
+        <version>2.4.2</version>
     </parent>
     <groupId>lark</groupId>
     <artifactId>lark-starter</artifactId>
@@ -26,10 +26,6 @@
     <properties>
         <lark.version>1.5.0-SNAPSHOT</lark.version>
         <java.version>1.8</java.version>
-        <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
-        <spring.cloud.netflix.version>2.2.0.RELEASE</spring.cloud.netflix.version>
-        <spring.cloud.openfeign.version>2.2.0.RELEASE</spring.cloud.openfeign.version>
-        <alibaba.nacos.version>2.2.0.RELEASE</alibaba.nacos.version>
     </properties>
 
     <dependencyManagement>
@@ -37,11 +33,6 @@
             <dependency>
                 <groupId>lark</groupId>
                 <artifactId>lark-core</artifactId>
-                <version>${lark.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>lark</groupId>
-                <artifactId>lark-util</artifactId>
                 <version>${lark.version}</version>
             </dependency>
             <dependency>
@@ -61,11 +52,6 @@
             </dependency>
             <dependency>
                 <groupId>lark</groupId>
-                <artifactId>lark-msg</artifactId>
-                <version>${lark.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>lark</groupId>
                 <artifactId>lark-task</artifactId>
                 <version>${lark.version}</version>
             </dependency>
@@ -80,11 +66,24 @@
                 <version>${lark.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring.cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>lark</groupId>
+                <artifactId>lark-msg</artifactId>
+                <version>${lark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>lark</groupId>
+                <artifactId>lark-util-index</artifactId>
+                <version>${lark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>lark</groupId>
+                <artifactId>lark-util-oss</artifactId>
+                <version>${lark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>lark</groupId>
+                <artifactId>lark-util-cache</artifactId>
+                <version>${lark.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -99,36 +98,26 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <version>${alibaba.nacos.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-            <version>${spring.cloud.netflix.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>${spring.cloud.openfeign.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <skipTests>true</skipTests>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <outputDirectory>/tmp/lark-projects</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
@@ -136,13 +125,21 @@
 
     <distributionManagement>
         <repository>
-            <id>sanqlt-releases</id>
-            <url>http://nexus-dev.sanqlt.com/repository/maven-releases/</url>
+            <id>playground-releases</id>
+            <url>http://package-repo-dev.lark-cloud.com/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>sanqlt-snapshots</id>
-            <url>http://nexus-dev.sanqlt.com/repository/maven-snapshots/</url>
+            <id>playground-snapshots</id>
+            <url>http://package-repo-dev.lark-cloud.com/repository/maven-snapshots/</url>
         </snapshotRepository>
+<!--        <repository>-->
+<!--            <id>sanqlt-releases</id>-->
+<!--            <url>http://nexus-dev.sanqlt.com/repository/maven-releases/</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>sanqlt-snapshots</id>-->
+<!--            <url>http://nexus-dev.sanqlt.com/repository/maven-snapshots/</url>-->
+<!--        </snapshotRepository>-->
 <!--        <repository>-->
 <!--            <id>playground-releases</id>-->
 <!--            <url>http://nexus.foo.com:8081/repository/maven-releases/</url>-->
@@ -155,7 +152,7 @@
 
     <profiles>
         <profile>
-            <id>nexus</id>
+            <id>nexus-playground</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

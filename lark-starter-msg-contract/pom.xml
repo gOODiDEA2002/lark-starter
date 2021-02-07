@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>lark</groupId>
-            <artifactId>lark-util</artifactId>
+            <artifactId>lark-msg</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -21,10 +21,6 @@
         </dependency>
         <dependency>
             <groupId>lark</groupId>
-            <artifactId>lark-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>lark</groupId>
             <artifactId>lark-service</artifactId>
         </dependency>
         <dependency>
@@ -36,17 +32,4 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <configuration>
-                        <skip>false</skip>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
