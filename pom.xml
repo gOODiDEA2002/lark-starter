@@ -120,28 +120,22 @@
 
     <distributionManagement>
         <repository>
-            <id>playground-releases</id>
-            <url>http://package-repo-dev.lark-cloud.com/repository/maven-releases/</url>
+            <id>releases</id>
+            <url>https://package-repo-dev.alzjqr.cn/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>playground-snapshots</id>
-            <url>http://package-repo-dev.lark-cloud.com/repository/maven-snapshots/</url>
+            <id>snapshots</id>
+            <url>https://package-repo-dev.alzjqr.cn/repository/maven-snapshots/</url>
         </snapshotRepository>
-<!--        <repository>-->
-<!--            <id>sanqlt-releases</id>-->
-<!--            <url>http://nexus-dev.sanqlt.com/repository/maven-releases/</url>-->
-<!--        </repository>-->
-<!--        <snapshotRepository>-->
-<!--            <id>sanqlt-snapshots</id>-->
-<!--            <url>http://nexus-dev.sanqlt.com/repository/maven-snapshots/</url>-->
-<!--        </snapshotRepository>-->
     </distributionManagement>
+
     <profiles>
         <profile>
-            <id>nexus-playground</id>
+            <id>package-repo-dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
     </profiles>
+
 </project>
