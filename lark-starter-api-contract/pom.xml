@@ -11,9 +11,13 @@
     <artifactId>lark-starter-api-contract</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <springdoc.version>1.5.13</springdoc.version>
+        <springdoc.version>1.6.0</springdoc.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>lark</groupId>
+            <artifactId>lark-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
